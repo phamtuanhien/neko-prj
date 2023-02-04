@@ -41,7 +41,7 @@ export class AuthController {
 
   @Get('me')
   @UseGuards(JwtAuthGuard)
-  test(@CurrentUser() user: JwtPayload) {
+  getMe(@CurrentUser() user: JwtPayload): Promise<UserEntity> {
     return this.userService.getById(user.id);
   }
 }

@@ -14,19 +14,11 @@ export class UserService {
   ) {}
 
   async getById(id: number): Promise<UserEntity> {
-    const user = await this.userRepository.findOne({ where: { id } });
-    if (user) {
-      return user;
-    }
-    throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    return await this.userRepository.findOne({ where: { id } });
   }
 
   async getByEmail(email: string): Promise<UserEntity> {
-    const user = await this.userRepository.findOne({ where: { email } });
-    if (user) {
-      return user;
-    }
-    throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    return await this.userRepository.findOne({ where: { email } });
   }
 
   async create(user: CreateUserDto): Promise<UserEntity> {
