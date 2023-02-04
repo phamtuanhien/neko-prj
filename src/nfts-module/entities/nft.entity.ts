@@ -6,10 +6,11 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  JoinColumn,
 } from 'typeorm';
 
 @Entity()
-class Nft {
+class NftEntity {
   @PrimaryGeneratedColumn()
   public id: number;
 
@@ -26,6 +27,7 @@ class Nft {
   public imageUrl: string;
 
   @ManyToOne(() => User, (owner: User) => owner.id)
+  @JoinColumn({ name: 'owner_id' })
   public owner: User;
 
   @CreateDateColumn({
@@ -44,4 +46,4 @@ class Nft {
   public updatedAt: Date;
 }
 
-export default Nft;
+export default NftEntity;

@@ -9,7 +9,7 @@ import {
 import Nft from '../../nfts-module/entities/nft.entity';
 
 @Entity()
-class User {
+class UserEntity {
   @PrimaryGeneratedColumn()
   public id: number;
 
@@ -44,4 +44,4 @@ class User {
   public updatedAt: Date;
 }
 
-export default User;
+export default UserEntity;
