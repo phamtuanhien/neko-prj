@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3333/api
 
-GET {{baseUrl}}/ HTTP/1.1
+GET {{baseUrl}} HTTP/1.1
 
 ###
 
@@ -9,7 +9,7 @@ POST {{baseUrl}}/auth/signup HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "tuanhien.4dev@gmail.com",
+  "email": "tuanhien.4dev@test.com",
   "password": "Tu4nhi3nloveyou!",
   "name": "Tuan Hien"
 }
@@ -21,7 +21,7 @@ POST {{baseUrl}}/auth/signin HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "tuanhien.4dev@gmail.com",
+  "email": "tuanhien.4dev@test.com",
   "password": "Tu4nhi3nloveyou!"
 }
 
