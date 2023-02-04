@@ -27,8 +27,8 @@ Content-Type: application/json
 
 ###
 
-@authToken = {{signin.response.body.$.accessToken}}
+@authToken = {{signin.response.body.accessToken}}
 
 # @name me
-GET {{baseUrl}}/me HTTP/1.1
+GET {{baseUrl}}/auth/test HTTP/1.1
 Authorization: Bearer {{authToken}}

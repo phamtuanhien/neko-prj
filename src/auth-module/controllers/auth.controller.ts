@@ -2,14 +2,19 @@ import {
   Body,
   ClassSerializerInterceptor,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
   Post,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import UserEntity from '../../users-module/entities/user.entity';
-import SignInDto from '../dtos/sign-in.dto';
+import { CurrentUser } from '../decorators/current-user.decorator';
 import SignUpDto from '../dtos/sign-up.dto';
+import { JwtAuthGuard } from '../guards/jwt-auth.guard';
+import { LocalAuthGuard } from '../guards/local-auth.guard';
+import { JwtPayload } from '../interfaces/jwt-payload.interface';
 import { AuthService } from '../services/auth.service';
 
 @Controller('auth')
@@ -25,7 +30,16 @@ export class AuthController {
 
   @Post('signin')
   @HttpCode(HttpStatus.OK)
-  async login(@Body() signIn: SignInDto): Promise<any> {
-    return 'Hello World';
+  @UseGuards(LocalAuthGuard)
+  async login(@CurrentUser() user): Promise<{ accessToken: string }> {
+    return this.authService.signIn(user);
+  }
+
+  @Get('test')
+  @UseGuards(JwtAuthGuard)
+  test(@CurrentUser() user: JwtPayload) {
+    console.log('📢 user\n', user);
+
+    return user;
   }
 }

@@ -20,7 +20,7 @@ class UserEntity {
   @Column({ unique: true })
   public email: string;
 
-  @Column({ select: false })
+  @Column()
   @Exclude()
   public password: string;
 
