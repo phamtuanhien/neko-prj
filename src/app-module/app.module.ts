@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import { AuthModule } from '../auth-module/auth.module';
 import { DatabaseModule } from '../database-module/database.module';
+import { NftModule } from '../nfts-module/nft.module';
 import { UserModule } from '../users-module/user.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -26,6 +27,7 @@ import { AppService } from './app.service';
     DatabaseModule,
     AuthModule,
     UserModule,
+    NftModule,
   ],
   controllers: [AppController],
   providers: [AppService],

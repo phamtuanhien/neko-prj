@@ -32,3 +32,9 @@ Content-Type: application/json
 # @name me
 GET {{baseUrl}}/auth/me HTTP/1.1
 Authorization: Bearer {{authToken}}
+
+###
+
+# @name nfts
+GET {{baseUrl}}/nfts HTTP/1.1
+Authorization: Bearer {{authToken}}
